@@ -1,0 +1,29 @@
+<div class="row">
+	<% if @articles.present? %>
+		<span class="col-md-12 alert alert-info">You have <%= @articles.count  %> articles so far.</span>
+		<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>Title</td>
+				<td>Author</td>
+				<td>Edit</td>
+				<td>Show</td>
+				<td>Delete</td>
+			</tr>
+		</thead>
+			<tbody>
+				<% @articles.each do |article| %>
+					<tr>
+						<td><%= article.title %></td>
+						<td><%= article.body %></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		No article founds
+	<% end %>
+</div>
