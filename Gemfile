@@ -41,11 +41,16 @@ group :test do
   gem 'faker'
   gem 'capybara'  
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'  
+  gem 'byebug'
+  gem "pry", "~> 0.9"
+  gem "pry-nav", "~> 0.2"
+  gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 group :development do

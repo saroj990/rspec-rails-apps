@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<% @article.present? %>
+		<div class="jumbotron">
+			<h1> <%= @article.title %></h1>
+			<div >
+					<%= @article.body %>
+			</div>	
+		</div>
+	<% else %>
+		<span class="alert alert-info">
+			Sorry!! we don't have any arictle.
+		</span>
+	<% end %>
+</div>

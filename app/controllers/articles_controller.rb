@@ -9,17 +9,17 @@ class ArticlesController < ApplicationController
 
 	def create
 		if params[:article].present?
-			article = Article.new(article_params)
-			if article.save
-				redirect_to articles_path
-			else
+			@article = Article.new(article_params)
+
+			if @article.save				
+				redirect_to root_path
+			else				
 				render 'new'
 			end
 		end
 	end
 
 	def edit 
-
 	end
 
 	def show

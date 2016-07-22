@@ -19,7 +19,7 @@ RSpec.describe Author, :type => :model do
 			@jones = FactoryGirl.create(:author,last_name: "Jones") 
 			@johnson= FactoryGirl.create(:author,last_name: "Johnson")	
   	end
-
+  	
   	it "returns a sorted array of results that match" do  	
 			expect(Author.by_letter("J").pluck(:last_name)).to  include('Johnson','Jones')
 		end
