@@ -33,7 +33,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.4.0'
   gem "factory_girl_rails"
 end
 

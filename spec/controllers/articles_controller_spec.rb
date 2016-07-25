@@ -67,7 +67,7 @@ RSpec.describe ArticlesController, :type => :controller do
 		end
 
 		it "re-render the new method" do 
-			post :create ,article: FactoryGirl.attributes_for(:author)
+			post :create ,article: FactoryGirl.attributes_for(:article, title: nil , body: nil)
 			response.should render_template :new
 		end
 	end
@@ -76,7 +76,7 @@ RSpec.describe ArticlesController, :type => :controller do
   describe "#PUT update an article" do
   	
   	before(:each) do 
-  		@article = FactoryGirl(:article,title: "AngularJs Intro", body:"Welcome to AngularJs")
+  		@article = FactoryGirl.create(:article,title: "AngularJs Intro", body:"Welcome to AngularJs")
   	end
 
   	context "valid attributes" do 
@@ -84,6 +84,42 @@ RSpec.describe ArticlesController, :type => :controller do
   			put :update, id:@article , article: FactoryGirl.attributes_for(:article)
       		assigns(:article).should eq(@article)      
   		end
+  	end
+
+  	context "with invalid attributes" do 
+  		
+  		it "does not update the record" do 
+  			put :update, id: @article , article: FactoryGirl.attributes_for(:article, title: "How i became your friend", body: nil)
+  			@article.reload
+  			expect(@article.title).not_to eq("How i became your friend")
+  		end
+
+  		it "renders the edit action upon updation failure" do 
+  			put :update, id: @article , article: FactoryGirl.attributes_for(:article, title: nil, body: nil)
+  			response.should render_template :edit
+   		end
+  	end
+
+  end
+
+  describe "#DELETE an article" do 
+  	
+  	before(:each) do 
+  		@article =  FactoryGirl.create(:article)
+  	end
+
+  	it "delete article" do 
+  		expect{delete :destroy, id: @article}.to change(Article,:count).by(-1)  		
+  	end
+
+  	it "redirects to article index" do 
+  		delete :destroy, id: @article
+  		response.should redirect_to root_path
+  	end
+
+  	it "respond to json" do 
+  		headers = { "CONTENT_TYPE" => "application/json" }
+  		delete :destroy, id: @article,format: :json
   	end
 
   end

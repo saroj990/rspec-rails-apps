@@ -1,7 +1,19 @@
-<%= form_for(@article) do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	<%= f.label :body %>
-	<%= f.text_field :body %>
-	<%= f.submit %>	
-<% end %>
+<div class="row">
+	<div class="small-margin">	
+		<div >
+			<%= form_for(@article) do |f| %>
+				<div class="margin-top">
+					<%= f.label :title %>
+					<%= f.text_field :title,class: "form-control flat-text-box" %>
+				</div>
+				<div class="margin-top">
+					<%= f.label :body %>
+					<%= f.text_area :body,class:"form-control flat-text-box" , rows: 10 %>
+				</div>	
+				<div class="margin-top">
+					<%= f.submit class:"btn btn-primary"%>
+				</div>					
+			<% end %>
+		</div>		
+	</div>
+</div>
