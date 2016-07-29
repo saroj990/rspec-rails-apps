@@ -11,6 +11,7 @@ RSpec.describe ArticlesController, :type => :controller do
 	end
 
 	describe "GET #index" do
+    
 		it "populates an array of articles" do 			
 			get :index
 			assigns(:articles).should eq([@article])

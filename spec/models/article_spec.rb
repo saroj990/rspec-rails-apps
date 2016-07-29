@@ -6,7 +6,7 @@ RSpec.describe Article, :type => :model do
   	expect(article).to be_valid
   end
 
-  it "should be valid" do 
+  it "has a valid body and title" do 
   	article =  FactoryGirl.build(:article)
   	expect(article.title).to eq("New Title")
   	expect(article.body).to eq("New Body")

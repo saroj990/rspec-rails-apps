@@ -32,22 +32,24 @@ class ArticlesController < ApplicationController
 		if params[:article].present?
 			@article = find_article
 			
-			if @article.update_attributes(article_params)				
-				redirect_to root_path
-
+			if @article.update_attributes(article_params)	
+				flash[:notice] = "Article was updated successfully!!"		
+				redirect_to articles_path
 			else						
 				render 'edit'
 			end
 		end
 	end
 
-	def destroy
-		@article = find_article		
-		@article.destroy
-
-		respond_to do |format|			
-			format.html { redirect_to root_path }
-			format.json { render json:{status: true}}
+	def destroy		
+		@article = find_article				
+		if@article			
+			@article.destroy
+			flash[:notice] = "Article was deleted successfully"			
+			respond_to do |format|					
+				format.html { redirect_to root_path ,flash[:notice] => "Article was deleted successfully"}
+				format.json { render json:{status: true}}
+			end		
 		end		
 	end
 

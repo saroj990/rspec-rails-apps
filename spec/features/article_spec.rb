@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe 'Feature spec Article' do 
 	describe "Manage Article" do 
-		
+		before :each do
+			Article.destroy_all
+		end
 		it "Adds new article and display the result" do 
 			visit articles_url
 
@@ -13,20 +15,58 @@ describe 'Feature spec Article' do
 				click_button "Create Article"
 			}.to change(Article,:count).by(1)
 
-			page.should has_content?("Article was created successfully")
+			expect(page).to have_content("Article was created successfully")
 		end
 
 		it "Deletes an article" do 			
-			article =  FactoryGirl.create(:article,title: "Faker usage",body: "i will add it later")
+			@article =  FactoryGirl.create(:article,title: "Faker usage",body: "i will add it later")
 			visit articles_url
 			expect{
-				within "#article_#{article.id}" do
-      				click_button "Delete"
+				within "#tblArticle" do
+					delete_button = page.find("#article_#{@article.id}")	
+					delete_button.click
       			end
 			}.to change(Article, :count).by(-1)
 
-			page.should have_content "Article was deleted successfully"
+			 expect(page).to have_content("Article was deleted successfully")
+			#expect(page.current_url).to eq(root_path)
 		end
 
+		it "Show an article" do 
+			@article = FactoryGirl.create(:article)
+			visit articles_url
+
+			expect{
+				within "#tblArticle" do 
+					show_button = page.find("#show_article_#{@article.id}")
+					show_button.click
+				end
+			}.to change(Article,:count).by(0)
+
+			expect(page.current_url).to eq(article_url(@article))
+		end
+
+		it "Edit an article" do 
+			@article = FactoryGirl.create(:article)
+			visit articles_url
+			
+			within "#tblArticle" do 
+				edit_button = page.find("#show_article_#{@article.id}")
+				edit_button.click
+			end
+			visit edit_article_url(@article)
+
+			expect{
+
+				fill_in "article_title", with: "Rspec Feature spec with capybara"
+				fill_in "article_body", with: "content"
+				click_button "Update Article"
+				}.to change(Article,:count).by(0)
+			
+			expect(page).to have_content("Article was updated successfully")
+			expect(page.current_url).to eq(articles_url)
+			
+
+		end
 	end
 end
