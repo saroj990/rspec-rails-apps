@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>	
-	<%= render :partial => '/layouts/shared/messages' %>
+	<div class="">
+		<%= render :partial => '/layouts/shared/header' %>
+	</div>	
+	<div class="navbar-margin-top">
+		<%= render :partial => '/layouts/shared/messages' %>
+	</div>	
 	<div class="container-fluid">
 		<%= yield %>
 	</div>

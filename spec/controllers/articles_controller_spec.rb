@@ -4,6 +4,9 @@ RSpec.describe ArticlesController, :type => :controller do
 	
 	before(:each)  do 
 		@article = FactoryGirl.create(:article)
+    user = FactoryGirl.create(:user)
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+    allow(controller).to receive(:current_user).and_return(user)
 	end
 
 	after(:each) do 
