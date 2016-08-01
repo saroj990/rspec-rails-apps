@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-	def new  
-		@article = Article.new		
+	before_action :initialize_variables, only:[:new]
+	def new  		
 	end
 
 	def index
@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
+		@comment = Comment.new
 		find_article
 	end
 
@@ -56,12 +57,16 @@ class ArticlesController < ApplicationController
 	private
 
 	 def article_params
-	 	params.require(:article).permit(:body,:title,:published_on,:is_published,:is_commentable,:author_id )
+	 	params.require(:article).permit(:body,:title,:published_on,:is_published,:is_commentable,:user_id )
 	 end
 
 	 def find_article  
 	 	if params[:id].present?
 	 		@article = Article.where(id: params[:id]).first
 	 	end	 
+	 end
+
+	 def initialize_variables	 	
+	 	@article = Article.new		
 	 end
 end

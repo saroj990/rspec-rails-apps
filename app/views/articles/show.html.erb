@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div  id="view_article_container">
 	<% if @article.present? %>
 		<div class="jumbotron">
 			<h1> <%= @article.title %></h1>
@@ -6,9 +6,17 @@
 				<%= @article.body %>
 			</div>	
 		</div>
+		<div id="comment_list">
+			<%= render :partial => "articles/shared/comment_list" %>
+		</div>
+		<div id="comment_form">
+			<%= render "comments/shared/comment_form", {:url => article_comments_path(@article), method: "POST"} %>
+
+		</div>
 	<% else %>
-		<span class="alert alert-info">
+		<span class="col-xs-12 alert alert-info">
 			Sorry!! we don't have any arictle.
+			<%= link_to "New Article", new_article_path ,class:"btn btn-primary pull-right" %>
 		</span>
 	<% end %>
 </div>

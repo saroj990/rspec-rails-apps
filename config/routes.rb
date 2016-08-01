@@ -57,8 +57,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  resources :articles
+  resources :articles do
+    resources :comments 
+  end
   resources :authors
+
   root "articles#index"
 
 end
