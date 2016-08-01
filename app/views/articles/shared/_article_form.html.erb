@@ -7,8 +7,9 @@
 					<%= f.text_field :title,class: "form-control flat-text-box" %>
 				</div>
 				<div class="margin-top">
-					<%= f.label :body %>
-					<%= f.text_area :body,class:"form-control flat-text-box" , rows: 10 %>
+					<%= f.label :body %>					
+					<%= f.cktext_area :body, id: 'article_body' %>
+					<%= f.hidden_field :user_id,value: current_user.id %>
 				</div>	
 				<div class="margin-top">
 					<%= f.submit class:"btn btn-primary"%>

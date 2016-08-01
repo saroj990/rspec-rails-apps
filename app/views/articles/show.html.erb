@@ -3,7 +3,7 @@
 		<div class="jumbotron">
 			<h1> <%= @article.title %></h1>
 			<div >
-				<%= @article.body %>
+				<%= @article.body.html_safe %>
 			</div>	
 		</div>
 		<div id="comment_list">

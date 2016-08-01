@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
 
-  	def name
+  	def full_name
 		[first_name.try(:downcase),last_name.try(:downcase)].join " "
 	end
 

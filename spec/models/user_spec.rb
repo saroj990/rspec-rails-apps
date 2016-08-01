@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
 
   it "return full name as john doe" do
   	user = FactoryGirl.create(:user)
-  	expect(user.name).to eq("john doe")
+  	expect(user.full_name).to eq("john doe")
   end
 
   describe "filter by name" do 
