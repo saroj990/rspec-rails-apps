@@ -22,22 +22,22 @@ RSpec.describe 18 do
      it {is_expected.to be >= 14}
 end
 
-Example-2
-class HelloWorld 
-  def say_hello
+ Example-2
+  class HelloWorld 
+   def say_hello
     "Hello World"
+   end
   end
-end
 
-describe HelloWorld  do
+ describe HelloWorld  do
   context "When testing HelloWorld class" do
     it "should say 'Hello World' when we call the say_hello" do
       helloWorld = HelloWorld.new
       message = helloWorld.say_hello
       expect(message).to eq "Hello World"
     end
-   end
   end
+ end
   
 ```
 * For fundamental idea on rspec:
