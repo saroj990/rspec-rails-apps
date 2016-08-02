@@ -11,10 +11,10 @@ It a very simple blog application with model spec,controller spec and a few feat
  	rspec or rspec -f d
  	
 * Some fundamentals about Rspec:
-```ruby
-# RSpec is having a very simple DSL let's give it a shot .
-  Let's say we want test if a number is less than a number or not.
-# test.rb
+```
+   RSpec is having a very simple DSL let's give it a shot .
+   Let's say we want test if a number is less than a number or not.
+  # test.rb
   RSpec.describe 18 do
    it {is_expected.to be <20}
    it {is_expected.to be >15}
