@@ -7,10 +7,10 @@ It a very simple blog application with model spec,controller spec and a few feat
 
 * How to use the application.
 
-	-clone the application
-	-bundle install
-	-rake db:migrate
-	-rspec or rspec -f d
+	* clone the application
+	* bundle install
+	* rake db:migrate
+	* rspec or rspec -f d
 
 * Some fundamentals about Rspec:
 	RSpec is having a very simple DSL which can be used like this.
