@@ -41,25 +41,25 @@ RSpec is having a very simple DSL let's give it a shot .
  
 ```
 * For fundamental idea on rspec:
- 	If you want start learning rspec from scratch i recommend you to hava look at this links
- 	http://blog.teamtreehouse.com/an-introduction-to-rspec
- 	https://semaphoreci.com/community/tutorials/getting-started-with-rspec
- 	http://www.tutorialspoint.com/rspec/rspec_basic_syntax.htm
- 	https://www.relishapp.com/rspec/rspec-rails/v/3-5/docs/gettingstarted
+ 	If you want start learning rspec from scratch i recommend you to have look at this links
+ 	 http://blog.teamtreehouse.com/an-introduction-to-rspec
+ 	 https://semaphoreci.com/community/tutorials/getting-started-with-rspec
+ 	 http://www.tutorialspoint.com/rspec/rspec_basic_syntax.htm
+ 	 https://www.relishapp.com/rspec/rspec-rails/v/3-5/docs/gettingstarted
 
 * For fixtures(mock data) i have used factory girl 
- 	https://github.com/thoughtbot/factory_girl_rails
- 	http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
+ 	 https://github.com/thoughtbot/factory_girl_rails
+ 	 http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
 
 * For feature spec capybara is widely used
 
  	Capybara is a web-based automation framework used for creating functional tests that simulate how users would interact with your application
 
- 	https://github.com/jnicklas/capybara
- 	http://tutorials.jumpstartlab.com/topics/capybara/capybara_practice.html
+ 	 https://github.com/jnicklas/capybara
+ 	 http://tutorials.jumpstartlab.com/topics/capybara/capybara_practice.html
  
 * For best practices:
- 	https://www.sitepoint.com/learn-the-first-best-practices-for-rails-and-rspec/
- 	http://tutorials.jumpstartlab.com/topics/internal_testing/rspec_practices.html
+ 	 https://www.sitepoint.com/learn-the-first-best-practices-for-rails-and-rspec/
+ 	 http://tutorials.jumpstartlab.com/topics/internal_testing/rspec_practices.html
 
 
