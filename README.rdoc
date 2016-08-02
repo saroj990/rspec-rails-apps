@@ -4,65 +4,61 @@ It a very simple blog application with model spec,controller spec and a few feat
 
 * Ruby version ruby-2.2.4
 
-
-* How to use the application.
-
-	* clone the application
-	* bundle install
-	* rake db:migrate
-	* rspec or rspec -f d
-
+* How to run the application
+ 	clone the application
+ 	bundle install
+ 	rake db:migrate
+ 	rspec or rspec -f d
+ 	
 * Some fundamentals about Rspec:
-	RSpec is having a very simple DSL which can be used like this.
+```ruby
+# RSpec is having a very simple DSL let's give it a shot .
+  Let's say we want test if a number is less than a number or not.
+# test.rb
+RSpec.describe 18 do
+     it {is_expected.to be <20}
+     it {is_expected.to be >15}
+     it {is_expected.to be <= 18}
+     it {is_expected.to be >= 14}
+end
 
-	Let's say we want test if a number is less than a number or not.
+Example-2
+class HelloWorld 
+  def say_hello
+    "Hello World"
+  end
+end
 
-	RSpec.describe 18 do
-	  it {is_expected.to be <20}
-	  it {is_expected.to be >15}
-	  it {is_expected.to be <= 18}
-	  it {is_expected.to be >= 14}
-	end
+describe HelloWorld  do
+  context "When testing HelloWorld class" do
+    it "should say 'Hello World' when we call the say_hello" do
+      helloWorld = HelloWorld.new
+      message = helloWorld.say_hello
+      expect(message).to eq "Hello World"
+    end
+   end
+  end
+  
+```
+* For fundamental idea on rspec:
+ 	If you want start learning rspec from scratch i recommend you to hava look at this links
+ 	http://blog.teamtreehouse.com/an-introduction-to-rspec
+ 	https://semaphoreci.com/community/tutorials/getting-started-with-rspec
+ 	http://www.tutorialspoint.com/rspec/rspec_basic_syntax.htm
+ 	https://www.relishapp.com/rspec/rspec-rails/v/3-5/docs/gettingstarted
 
-	We use describe block to describe what the test is all about and can nest "context" inside "describe" block to assemble related stuff together.
-
-		class HelloWorld
-
-			def say_hello
-				"Hello World"
-			end
-		end
-
-		describe HelloWorld  do
-			context "When testing HelloWorld class" do
-				it "should say 'Hello World' when we call the say_hello" do
-					helloWorld = HelloWorld.new
-					message = helloWorld.say_hello
-					expect(message).to eq "Hello World"
-				end
-			end
-		end	
-
-
-# For fundamental idea on rspec:
- 	If you want start learning rspec from scratch i recommened you to hava look at this links.
- 	(http://blog.teamtreehouse.com/an-introduction-to-rspec)
- 	(https://semaphoreci.com/community/tutorials/getting-started-with-rspec)
- 	(http://www.tutorialspoint.com/rspec/rspec_basic_syntax.htm)
- 	(https://www.relishapp.com/rspec/rspec-rails/v/3-5/docs/gettingstarted)
-
-# For fixtures(mock data) i have used factory girl 
+* For fixtures(mock data) i have used factory girl 
  	https://github.com/thoughtbot/factory_girl_rails
  	http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
 
-# For feature spec capybara is widely used
+* For feature spec capybara is widely used
 
  	Capybara is a web-based automation framework used for creating functional tests that simulate how users would interact with your application
 
  	https://github.com/jnicklas/capybara
  	http://tutorials.jumpstartlab.com/topics/capybara/capybara_practice.html
  
-# For best practices:
+* For best practices:
  	https://www.sitepoint.com/learn-the-first-best-practices-for-rails-and-rspec/
  	http://tutorials.jumpstartlab.com/topics/internal_testing/rspec_practices.html
 
