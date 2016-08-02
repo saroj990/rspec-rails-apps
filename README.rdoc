@@ -13,7 +13,7 @@ It a very simple blog application with model spec,controller spec and a few feat
 * Some fundamentals about Rspec:
 ```
 RSpec is having a very simple DSL let's give it a shot .
-   Let's say we want test if a number is less than a number or not.
+   Let's say we want to test if a number is less than a number or not.
   # test.rb
   RSpec.describe 18 do
    it {is_expected.to be <20}
