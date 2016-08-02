@@ -6,16 +6,16 @@ It a very simple blog application with model spec,controller spec and a few feat
 
 
 * How to use the application.
+	* clone the application
 
-	clone the application
+	* bundle install
 
-	bundle install
+	* rake db:migrate
 
-	rake db:migrate
+	* rspec or rspec -f d
 
-	rspec or rspec -f d
+* Some fundamentals about Rspec:
 
-Some fundamentals about Rspec:
 	RSpec is having a very simple DSL which can be used like this.
 
 	Let's say we want test if a number is less than a number or not.
@@ -30,7 +30,6 @@ Some fundamentals about Rspec:
 	We use describe block to describe what the test is all about and can nest "context" inside "describe" block to assemble related stuff together.
 
 		class HelloWorld
-
 			def say_hello
 				"Hello World"
 			end
