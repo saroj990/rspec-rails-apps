@@ -6,9 +6,8 @@ It a very simple blog application with model spec,controller spec and a few feat
 
 
 * How to use the application.
-
 	clone the application
-
+	
 	bundle install
 
 	rake db:migrate
