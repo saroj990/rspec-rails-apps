@@ -6,33 +6,33 @@ It a very simple blog application with model spec,controller spec and a few feat
 
 
 * How to use the application.
- 1.>  clone the application.
- 2.>  bundle install to update the gems and dependencies
- 3.>  rake db:migrate to run migrations.
- 4.>  rspec or rspec -f d to run the spec.
+	1.  clone the application.
+	2.  <h5>bundle install</h5> to update the gems and dependencies
+	3.  <h5>rake db:migrate</h5 to run migrations.
+	4.  <h5>rspec</h5> or <h5>rspec -f d</h5> to run the spec.
 
- How to get Started with rspec.
- These are a few references that may guide you to learn rspec in better way.
+* How to get Started with rspec.
+    These are a few references that may guide you to learn rspec in better way.
 
 
 
- For fundamental idea on rspec:
+* For fundamental idea on rspec:
  	If you want start learning rspec from scratch i recommened you to hava look at this links.
  	https://semaphoreci.com/community/tutorials/getting-started-with-rspec
  	http://www.tutorialspoint.com/rspec/rspec_basic_syntax.htm
  	https://www.relishapp.com/rspec/rspec-rails/v/3-5/docs/gettingstarted
 
- For fixtures(mock data) i have used factory girl 
+* For fixtures(mock data) i have used factory girl 
  	https://github.com/thoughtbot/factory_girl_rails
  	http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
 
- For feature spec capybara is widely used
+* For feature spec capybara is widely used
  	Capybara is a web-based automation framework used for creating functional tests that simulate how users would interact with your application
 
  	https://github.com/jnicklas/capybara
  	http://tutorials.jumpstartlab.com/topics/capybara/capybara_practice.html
  
- For best practices:
+* For best practices:
  	https://www.sitepoint.com/learn-the-first-best-practices-for-rails-and-rspec/
  	http://tutorials.jumpstartlab.com/topics/internal_testing/rspec_practices.html
 
