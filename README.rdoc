@@ -2,17 +2,17 @@
 This application is a starting guide to how to use rspec in rails.
 It a very simple blog application with model spec,controller spec and a few feature specs.
 
-#Ruby version ruby-2.2.4
+# Ruby version ruby-2.2.4
 
 
-*# How to use the application.
+# How to use the application.
 
 	-clone the application
 	-bundle install
 	-rake db:migrate
 	-rspec or rspec -f d
 
-#Some fundamentals about Rspec:
+# Some fundamentals about Rspec:
 	RSpec is having a very simple DSL which can be used like this.
 
 	Let's say we want test if a number is less than a number or not.
