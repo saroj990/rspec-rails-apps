@@ -1,31 +1,36 @@
-<div class="">
-	<% if @articles.present? %>		
-		<table class="table table-striped" id="tblArticle">
-		<thead>
-			<tr>
-				<td>Title</td>
-				<td>Author</td>
-				<td>Edit</td>
-				<td>Show</td>
-				<td>Delete</td>
-			</tr>
-		</thead>
-			<tbody>
-				<% @articles.each do |article| %>
-					<tr>
-						<td><%= article.title %></td>
-						<td><%= article.user.try(:full_name) %></td>
-						<td><%= link_to "Edit", edit_article_path(article),class: "btn btn-primary" ,id: "edit_article_#{article.id}"%></td>
-						<td><%= link_to "Show", article_path(article) ,class: "btn btn-primary",id: "show_article_#{article.id}"%></td>
-						<td><%= link_to "Delete",article_path(article),class: "btn btn-warning", method: :delete,id: "article_#{article.id}"%></td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
+<div class="articles_container">
+	<%= link_to("New Article",new_article_path,class:"btn btn-primary pull-right") %>	
+	<% if @articles.present? %>
+		<div class="row">
+			<% @articles.each do |article| %>
+				 <div class="col-xs-12 col-sm-6 col-md-3">
+	          <div class="thumbnail">
+	          	<% if article.cover.file.nil? %>
+	            		<img src="http://placehold.it/500x300" alt="">
+	            <% else %>
+	            	<%= image_tag(article.cover.cover_image.url) %>
+	            <% end %>	            	
+              <div class="caption">
+                <h4>  <%= article.title %></h4>
+                <div>
+                	by <%= article.user.try(:full_name) %>
+                	<%= image_tag(article.user.avatar.extra_small_thumb.url, class:"img-circle ") %>               	
+                </div>
+                <div class="margin-top">
+                	<%= link_to "Edit", edit_article_path(article),class: "btn btn-info btn-xs" ,id: "edit_article_#{article.id}"%>
+                	<%= link_to "Show", article_path(article) ,class: "btn btn-info btn-xs",id: "show_article_#{article.id}"%>
+                	<%= link_to "Delete",article_path(article),class: "btn btn-warning btn-xs", method: :delete,id: "article_#{article.id}"%>
+                	<%= article.likes %>
+                	<%= image_tag("/likes.png",class:"small-icon") %>Likes
+                </div>
+	            </div>
+	          </div>
+	        </div>
+			<% end %>
+		</div>
 	<% else %>
-		<div class="alert alert-info">No article founds</div>
-	<% end %>
-	<div>
-		<%= link_to("New Article",new_article_path,class:"btn btn-primary pull-right") %>
-	</div>
+		<div class="alert alert-info margin-top">No article is present!!</div>	
+	<% end %>	
+
 </div>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801230247) do
+ActiveRecord::Schema.define(version: 20160805135514) do
 
   create_table "articles", force: :cascade do |t|
     t.text     "body"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160801230247) do
     t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "cover"
+    t.integer  "likes"
+    t.integer  "shares"
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id"
@@ -83,6 +86,8 @@ ActiveRecord::Schema.define(version: 20160801230247) do
     t.string   "last_name",              limit: 70
     t.string   "phone_number",           limit: 15
     t.boolean  "is_active",                         default: false
+    t.string   "avatar"
+    t.string   "about_user"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
