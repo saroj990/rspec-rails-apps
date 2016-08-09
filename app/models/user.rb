@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
 
-  	def full_name
+  def full_name
 		[first_name.try(:downcase),last_name.try(:downcase)].join " "
 	end
 
@@ -28,4 +28,17 @@ class User < ActiveRecord::Base
   def has_about_section?
     about_user.present?
   end
+
+  def self.user_has_role?(email,role)
+    binding.pry
+    role_flag = false;
+    if email.present?
+      user = User.where(:email => email).first
+      if user.present?
+        role_flag = user.has_role?(role)
+      end
+    end
+    role_flag
+  end
+
 end

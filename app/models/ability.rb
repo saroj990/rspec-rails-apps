@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
       else
         can :read, Article
-        can [:create,:update,:read] Article if user.has_role?(:author, Article)       
+        can [:create,:update,:read], Article if user.has_role?(:author, Article)       
       end
     
     # The first argument to `can` is the action you are giving the user
