@@ -29,8 +29,7 @@ class User < ActiveRecord::Base
     about_user.present?
   end
 
-  def self.user_has_role?(email,role)
-    binding.pry
+  def self.user_has_role?(email,role)   
     role_flag = false;
     if email.present?
       user = User.where(:email => email).first
