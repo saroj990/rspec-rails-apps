@@ -1,7 +1,9 @@
 <div class="articles_container">
-	<%= link_to("New Article",new_article_path,class:"btn btn-primary pull-right") %>	
+  <div class="row">
+    <%= link_to("New Article",new_article_path,class:"btn btn-primary pull-right") %> 
+  </div>  	
 	<% if @articles.present? %>
-		<div class="row">
+		<div class="row margin-top">
 			<% @articles.each do |article| %>
 				 <div class="col-xs-12 col-sm-6 col-md-3">
 	          <div class="thumbnail">

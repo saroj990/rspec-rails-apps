@@ -9,7 +9,7 @@ class Ability
       if user.has_role?(:author)
         can :read, Article
         can [:create,:read], Article if user.has_role?(:author, Article)  
-        can [:update], Article if user_id = user.id
+        can [:edit,:update], Article , :user_id => user.id
         cannot :destroy ,Article   
 
       elsif user.has_role?(:admin)

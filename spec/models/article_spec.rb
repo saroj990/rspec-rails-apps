@@ -26,5 +26,5 @@ RSpec.describe Article, :type => :model do
   	article1 = FactoryGirl.build(:article,:title => "Rspec rails",:body => "Here we go")
   	article2 =  FactoryGirl.build(:article,:title => "Rspec rails",:body => "Here we go")
   	expect(article2.errors).to be_truthy
-  end
+  end 
 end
