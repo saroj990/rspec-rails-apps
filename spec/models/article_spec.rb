@@ -27,4 +27,20 @@ RSpec.describe Article, :type => :model do
   	article2 =  FactoryGirl.build(:article,:title => "Rspec rails",:body => "Here we go")
   	expect(article2.errors).to be_truthy
   end
+
+  # with factory girl sample model 
+  it "is a valid factory" do 
+    article = Article.create(title: "Rspec basic", body:"No content")
+    expect(article).to be_valid
+  end
+
+  it "is invalid without title" do
+    article = Article.create(title: "Rspec basic",body:nil)
+    expect(article).to be_invalid
+  end
+
+  it "add a new article and count increase by 1" do 
+    article =  Article.create(title: "Data abstraction", body: "No conent")
+    expect(Article.count).to eq(1)
+  end
 end

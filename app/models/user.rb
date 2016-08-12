@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
 
-  	def full_name
+  def full_name
 		[first_name.try(:downcase),last_name.try(:downcase)].join " "
 	end
 
@@ -20,5 +20,10 @@ class User < ActiveRecord::Base
 
 	def self.desc(field_name)
 		order(User.arel_table[field_name.to_sym].desc)
-	end	
+	end
+
+  def total_articles_published
+    articles.where(is_published: true).count
+  end
+
 end

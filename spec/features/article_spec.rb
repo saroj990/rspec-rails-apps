@@ -7,8 +7,7 @@ describe 'Feature spec Article' do
 		before :each do
 			Article.destroy_all
 			user = FactoryGirl.create(:user)
-      		login_as(user)
-		   
+      		login_as(user)		   
 		end
 		it "Adds new article and display the result" do 
 			visit articles_url
@@ -70,7 +69,6 @@ describe 'Feature spec Article' do
 			
 			expect(page).to have_content("Article was updated successfully")
 			expect(page.current_url).to eq(articles_url)
-
 		end
 	end
 end

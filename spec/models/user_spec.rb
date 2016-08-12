@@ -29,5 +29,10 @@ RSpec.describe User, type: :model do
 		it "fails deliberately for wrong order i,e jones johnson,smith" do 
 			User.desc('last_name').should_not == [@jones,@johnson,@smith]
 		end
+
+    it "count the number of published article" do 
+      expect(@smith.total_articles_published). to eq(0)
+    end
+
   end  
 end

@@ -4,9 +4,9 @@ RSpec.describe ArticlesController, :type => :controller do
 	
 	before(:each)  do 
 		@article = FactoryGirl.create(:article)
-    user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user)
     allow(controller).to receive(:authenticate_user!).and_return(true)
-    allow(controller).to receive(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(@user)
 	end
 
 	after(:each) do 
@@ -49,32 +49,31 @@ RSpec.describe ArticlesController, :type => :controller do
 
   describe "#post an article" do 
 
-	context "with valid attributes" do		
-		
-		it "create a new article" do 
-			article_attributes = FactoryGirl.attributes_for(:article)
-  			post :create, article: article_attributes
-  			expect(Article.count).to eq(2)
-			
-		end
+  	context "with valid attributes" do		
+  		
+  		it "create a new article" do 
+  			article_attributes = FactoryGirl.attributes_for(:article)
+    		post :create, article: article_attributes,user: @user
+    		expect(Article.count).to eq(2)			
+  		end
 
-		it "redirect to index" do 
-			post :create, article: FactoryGirl.attributes_for(:article)
-			response.should redirect_to root_path
-		end	
-	end 	
+  		it "redirect to index" do 
+  			post :create, article: FactoryGirl.attributes_for(:article),user: @user
+  			response.should redirect_to root_path
+  	  end	
+	  end 	
 
-	context "for invalid attributes" do
+  	context "for invalid attributes" do
 
-		it "does not save the record" do 
-			expect{post :create ,article: FactoryGirl.attributes_for(:author)}.to_not change(Article,:count)
-		end
+  		it "does not save the record" do 
+  			expect{post :create ,article: FactoryGirl.attributes_for(:author)}.to_not change(Article,:count)
+  		end
 
-		it "re-render the new method" do 
-			post :create ,article: FactoryGirl.attributes_for(:article, title: nil , body: nil)
-			response.should render_template :new
-		end
-	end
+  		it "re-render the new method" do 
+  			post :create ,article: FactoryGirl.attributes_for(:article, title: nil , body: nil)
+  			response.should render_template :new
+  		end
+  	end
   end
 
   describe "#PUT update an article" do
@@ -125,7 +124,8 @@ RSpec.describe ArticlesController, :type => :controller do
   		headers = { "CONTENT_TYPE" => "application/json" }
   		delete :destroy, id: @article,format: :json
   	end
-
   end
+
+  #it create a new article instance  
 
 end
