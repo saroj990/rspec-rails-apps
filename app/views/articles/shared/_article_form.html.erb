@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="small-margin">	
-		<div >
+		<div>		
+			<%= @article.new_record? ? 'New Article': 'Edit Article' %>	
 			<%= form_for(@article) do |f| %>
 				<div class="margin-top">
 					<%= f.label :title %>
@@ -9,7 +10,7 @@
 				<div class="margin-top">
 					<%= f.label :body %>					
 					<%= f.cktext_area :body, id: 'article_body' %>
-					<%= f.hidden_field :user_id,value: current_user.id %>
+					<%= f.hidden_field :user_id,value: current_user.try(:id) %>
 				</div>	
 				<div class="margin-top">
 					<%= f.submit class:"btn btn-primary"%>

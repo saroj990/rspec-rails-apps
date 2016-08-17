@@ -26,6 +26,9 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.raise_errors_for_deprecations!
   config.include Capybara::DSL
+  config.include ApplicationHelper
+ config.include Devise::Test::ControllerHelpers
+  config.include Devise::TestHelpers, :type => :view
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

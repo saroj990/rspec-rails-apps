@@ -7,7 +7,7 @@
 			</div>	
 		</div>
 		<div id="comment_list">
-			<%= render :partial => "articles/shared/comment_list" %>
+			<%= render :partial => "/articles/shared/comment_list" , :locals => {:comments => @article.comments}%>
 		</div>
 		<div id="comment_form">
 			<%= render "comments/shared/comment_form", {:url => article_comments_path(@article), method: "POST"} %>
@@ -15,7 +15,7 @@
 		</div>
 	<% else %>
 		<span class="col-xs-12 alert alert-info">
-			Sorry!! we don't have any arictle.
+			Sorry!! we don't have the arictle.
 			<%= link_to "New Article", new_article_path ,class:"btn btn-primary pull-right" %>
 		</span>
 	<% end %>

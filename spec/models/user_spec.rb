@@ -34,5 +34,7 @@ RSpec.describe User, type: :model do
       expect(@smith.total_articles_published). to eq(0)
     end
 
+    it "returns 1 "
+
   end  
 end

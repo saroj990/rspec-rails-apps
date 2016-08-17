@@ -1,15 +1,15 @@
 <div class="">
-			<% if @article.comments.present? %>
-				<% @article.comments.each do |comment | %>
-					<div class="comment-container">
-						<div>
-							<%= comment.text %>
-						</div>
-						<span class="green-text">
-							<%= comment.user.try(:full_name) %>   |  
-							<%= distance_of_time_in_words(comment.updated_at, Time.now)  %>	ago						
-						</span>						
-					</div>
-				<%end %>
-			<% end %>
-		</div>		
+	<% if comments.present? %>
+	  <% comments.each do |comment | %>
+	      <div class="comment-container">
+	          <div>
+	              <%= comment.text %>
+	          </div>
+	          <span class="green-text">
+	    <%= comment.user.try(:full_name) %>   |  
+	    <%= distance_of_time_in_words(comment.updated_at, Time.now)  %> ago           
+	  </span>
+    </div>
+  	<%end %>
+  <% end %>
+</div>
