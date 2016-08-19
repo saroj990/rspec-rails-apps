@@ -27,7 +27,7 @@ RSpec.configure do |config|
   config.raise_errors_for_deprecations!
   config.include Capybara::DSL
   config.include ApplicationHelper
- config.include Devise::Test::ControllerHelpers
+  config.include Devise::Test::ControllerHelpers
   config.include Devise::TestHelpers, :type => :view
 
   config.before(:suite) do

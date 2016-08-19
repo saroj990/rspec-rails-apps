@@ -37,6 +37,7 @@ context "renders all the comments" do
       @user = FactoryGirl.create(:user, email: Faker::Internet.email)
       @article = FactoryGirl.create(:article,title: "Rspec",user_id: @user.id)
       @comment =  FactoryGirl.create(:comment,text:"Nice Article",user_id: @user.id,article_id: @article.id) 
+      @comment1 =  FactoryGirl.create(:comment,text:"Awesome Article",user_id: @user.id,article_id: @article.id) 
     end
     it "renders comments" do      
       render :partial => "/articles/shared/comment_list" , :locals => {:comments => @article.comments}
