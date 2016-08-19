@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   end
 
   it "return full name as john doe" do
-  	user = FactoryGirl.create(:user)
+  	user = FactoryGirl.create(:user,first_name: "john", last_name: "doe")
   	expect(user.full_name).to eq("john doe")
   end
 
@@ -32,9 +32,7 @@ RSpec.describe User, type: :model do
 
     it "count the number of published article" do 
       expect(@smith.total_articles_published). to eq(0)
-    end
-
-    it "returns 1 "
+    end  
 
   end  
 end
