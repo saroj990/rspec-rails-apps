@@ -59,7 +59,7 @@ RSpec.describe ArticlesController, :type => :controller do
 
   		it "redirect to index" do 
   			post :create, article: FactoryGirl.attributes_for(:article),user: @user
-  			response.should redirect_to root_path
+  			response.should redirect_to articles_path
   	  end	
 	  end 	
 
