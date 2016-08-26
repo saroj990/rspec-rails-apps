@@ -4,4 +4,9 @@ class Article < ActiveRecord::Base
 	validates_presence_of :title,:body
 	# validates_uniqueness_of :title
 	scope :published, -> {where(is_published: true)}
+
+  def article_user
+    self.user
+  end
+
 end

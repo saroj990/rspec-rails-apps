@@ -2,15 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "Article routes",:type => :routing do  
   
-  it "index /articles/index" do 
+  it "/articles/index => 'articles#index'" do 
     expect(:get => "/articles").to route_to(:controller => "articles",:action => "index")
   end
 
-  it "article/new" do 
+  it "/article/new => articles#new" do 
     expect(:get => "/articles/new").to route_to(:controller => "articles",:action => "new")
   end
 
-  it "article/create" do 
+  it "/article/create => article#create" do 
     expect(:post => "/articles").to route_to(:controller => "articles",:action => "create")
   end  
 
@@ -20,11 +20,7 @@ RSpec.describe "Article routes",:type => :routing do
 
   it  "update article /articles/12 " do 
     expect(:patch => "/articles/12").to route_to(:controller => "articles", :action => "update", :id => '12')
-  end
-
-  it  "update article /articles/12 " do 
-    expect(:put => "/articles/12").to route_to(:controller => "articles", :action => "update", :id => '12')
-  end
+  end  
 
   it "show article /articles/12" do 
     expect(:get => "/articles/12").to route_to(:controller => "articles", :action => "show",:id => "12")

@@ -13,7 +13,7 @@ RSpec.describe ArticlesController, :type => :controller do
 		Article.destroy_all
 	end
 
-	describe "GET #index" do
+	describe "index page" do
     
 		it "populates an array of articles" do 			
 			get :index
