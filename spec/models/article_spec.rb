@@ -16,4 +16,8 @@ RSpec.describe 'Article', type: :model do
     article =  Article.create(title: "Rspec",body: "rspec")
     expect(Article.count).to eq(1)
   end
+
+   it ".article_user" do
+
+ end
 end

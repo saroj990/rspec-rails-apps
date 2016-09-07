@@ -18,6 +18,8 @@ RSpec.describe 'Article management', type: :request do
   expect(Article.count).to eq(1)
 
   expect(response).to redirect_to(articles_url)
+  get: new 
+
  end
 
 end
