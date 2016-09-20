@@ -13,7 +13,7 @@ class Ability
         cannot :destroy ,Article   
 
       elsif user.has_role?(:admin)
-        can [:create,:destroy,:read], :all
+        can [:create,:destroy,:read,:edit], :all
         can :assign_roles
       else
         can :read,Article        
