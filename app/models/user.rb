@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
+  rolify
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  mount_uploader :avatar,AvatarUploader
   has_many :articles
   has_many :comments
 
@@ -24,6 +27,21 @@ class User < ActiveRecord::Base
 
   def total_articles_published
     articles.where(is_published: true).count
+	end	
+
+  def has_about_section?
+    about_user.present?
+  end
+
+  def self.user_has_role?(email,role)   
+    role_flag = false;
+    if email.present?
+      user = User.where(:email => email).first
+      if user.present?
+        role_flag = user.has_role?(role)
+      end
+    end
+    role_flag
   end
 
 end

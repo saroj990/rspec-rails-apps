@@ -33,6 +33,7 @@ RSpec.describe Article, :type => :model do
   	article1 = FactoryGirl.build(:article,:title => "Rspec rails",:body => "Here we go")
   	article2 =  FactoryGirl.build(:article,:title => "Rspec rails",:body => "Here we go")
   	expect(article2.errors).to be_truthy
+<<<<<<< HEAD
   end
 
   # with factory girl sample model 
@@ -50,5 +51,8 @@ RSpec.describe Article, :type => :model do
     article =  Article.create(title: "Data abstraction", body: "No conent")
     expect(Article.count).to eq(1)
   end
+=======
+  end 
+>>>>>>> enhancement
 end
 

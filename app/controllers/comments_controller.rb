@@ -10,20 +10,18 @@ class CommentsController < ApplicationController
 			@article = find_article(params[:article_id])
 			@comment = Comment.new(comment_params)
 			@comment.user_id = current_user.id		
-			
-			if @comment.save
-				@status ={status:"ok",message: "comment added successfully",errors:[]}
-				respond_to  do |format|
+
+			respond_to do |format|
+				if @comment.save
+					@status ={status:"ok",message: "comment added successfully",errors:[]}
 					format.html {notice:"comment added",redirect_to(comments_path)}
 					format.js {}
-				end						
-			else
-				@result = {status: "error", message: "error", errors: @comment.errors}
-				respond_to  do |format|
+				else
+					@result = {status: "error", message: "error", errors: @comment.errors}
 					format.html {error:"comment was added",redirect_to(comments_path)}
 					format.js {}
-				end	
-			end
+				end
+			end		
 		end
 	end
 	

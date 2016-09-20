@@ -1,17 +1,30 @@
 <div  id="view_article_container">
 	<% if @article.present? %>
-		<div class="jumbotron">
-			<h1> <%= @article.title %></h1>
+		<div class="jumbotron">			
+			<h3 class="heading"> <%= @article.title %></h3>
 			<div >
 				<%= @article.body.html_safe %>
 			</div>	
+			<div class="user-info float-left">
+				<div class="user-img">
+					<%= image_tag @article.user.avatar.small_thumb.url, class:"img-circle" %>						
+				</div>
+				<div class="user">
+					<%= @article.user.full_name %>
+				</div>
+				<div class="about-user">
+					<% if @article.user.has_about_section? %>
+						<%= @article.user.about_other %>
+					<% end %>
+				</div>
+			</div>
 		</div>
+
 		<div id="comment_list">
 			<%= render :partial => "/articles/shared/comment_list" , :locals => {:comments => @article.comments}%>
 		</div>
 		<div id="comment_form">
 			<%= render "comments/shared/comment_form", {:url => article_comments_path(@article), method: "POST"} %>
-
 		</div>
 	<% else %>
 		<span class="col-xs-12 alert alert-info">

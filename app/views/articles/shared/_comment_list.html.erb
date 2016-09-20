@@ -1,15 +1,17 @@
 <div class="">
-	<% if comments.present? %>
-	  <% comments.each do |comment | %>
-	      <div class="comment-container">
-	          <div>
-	              <%= comment.text %>
-	          </div>
-	          <span class="green-text">
-	    <%= comment.user.try(:full_name) %>   |  
-	    <%= distance_of_time_in_words(comment.updated_at, Time.now)  %> ago           
-	  </span>
-    </div>
-  	<%end %>
-  <% end %>
+	<% if @article.comments.present? %>
+		<% @article.comments.each do |comment | %>
+			<div class="comment-container">
+				<div>
+					<%= comment.text %>
+				</div>
+				<span class="green-text">
+					<%= comment.user.try(:full_name) %> <%= image_tag comment.user.avatar.extra_small_thumb.url, class:"img-circle" %>			
+					<p>
+						<%= distance_of_time_in_words(comment.updated_at, Time.now)  %>	ago		
+					</p>	
+				</span>						
+			</div>
+		<%end %>
+	<% end %>
 </div>
