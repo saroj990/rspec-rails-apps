@@ -6,14 +6,14 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)      
 
-      if user.has_role?(:author)
+      if user.has_role?(:author)        
         can :read, Article
         can [:create,:read], Article if user.has_role?(:author, Article)  
         can [:edit,:update], Article , :user_id => user.id
         cannot :destroy ,Article   
 
-      elsif user.has_role?(:admin)
-        can [:create,:destroy,:read,:edit], :all
+      elsif user.has_role?(:admin)        
+        can [:create,:destroy,:read,:edit,:update], :all
         can :assign_roles
       else
         can :read,Article        

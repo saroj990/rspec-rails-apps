@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   end
   resources :authors
 
+  get "home/index"
   root "articles#index"
 
 end

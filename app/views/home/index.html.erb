@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <% @articles.each do |article| %>
+        <div class="col-md-12 article-container">
+          <div class="image-resize">
+           <%= image_tag article.user.avatar.small_thumb.url, class:"img-circle" %>           
+          </div>
+          <div class="user-and-date-info">
+            <div class="article-title">
+              <h4><%= article.title %></h4>
+            </div>
+            <div class="article-user-and-date-info">
+              <%= article.user.full_name %> | <%= article.try(:date_of_published) || Time.now.strftime('%d %a %Y') %>        
+            </div>
+          </div>    
+          <div class="row">
+            <div class="description-block">
+              <%= article.body.html_safe[3..100] + '  ...' if article.body.present? %> 
+            </div>    
+          </div>          
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      Assume you have a Ruby range and have to transform it to a regular expression. Say, you have -9..9 and have  
+    </div>
+  </div>
+</div>
