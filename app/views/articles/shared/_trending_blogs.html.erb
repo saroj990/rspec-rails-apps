@@ -1,0 +1,17 @@
+<% if trending_articles.present? %>  
+  <div class="row margin-top">
+    <% trending_articles.each do |article| %>
+      <div class="col-xs-12 trending-article-container article-margin">
+        <div class="">          
+          <div class="trending-article-header">
+            <%= link_to article.title, article_path(article) %>
+          </div>
+          <div class="">
+            by <%= article.user.try(:full_name) %>
+            <%= image_tag(article.user.avatar.extra_small_thumb.url, class:"img-circle ") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

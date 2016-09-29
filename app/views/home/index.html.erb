@@ -8,7 +8,7 @@
           </div>
           <div class="user-and-date-info">
             <div class="article-title">
-              <h4><%= article.title %></h4>
+              <h4><%= link_to article.title,article_path(article) %></h4>
             </div>
             <div class="article-user-and-date-info">
               <%= article.user.full_name %> | <%= article.try(:date_of_published) || Time.now.strftime('%d %a %Y') %>        
@@ -23,7 +23,10 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      Assume you have a Ruby range and have to transform it to a regular expression. Say, you have -9..9 and have  
+     <div class="heading-text">Trending Articles</div> 
+     <div>
+        <%= render partial: "/articles/shared/trending_blogs", locals: {trending_articles: @trending_articles} %> 
+     </div>
     </div>
   </div>
 </div>

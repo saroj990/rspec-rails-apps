@@ -1,3 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.heading-text {
+    font-size: 18px;
+}
+
+.trending-article-container {
+    height: 100px;
+    background-color: #AED6F1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px;
+}
+
+.trending-article-header {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.article-margin {
+    margin-top: 15px;
+}

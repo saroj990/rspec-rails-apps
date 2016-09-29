@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :initialize_variables, only:[:new]
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, except: [:show]
 	load_and_authorize_resource
 	
 	def new  		
