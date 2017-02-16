@@ -14,7 +14,7 @@ RSpec.describe ArticlesController, :type => :controller do
 	end
 
 	describe "GET #index" do
-    
+      
 		it "populates an array of articles" do 			
 			get :index
 			assigns(:articles).should eq([@article])
@@ -49,32 +49,32 @@ RSpec.describe ArticlesController, :type => :controller do
 
   describe "#post an article" do 
 
-	context "with valid attributes" do		
-		
-		it "create a new article" do 
-			article_attributes = FactoryGirl.attributes_for(:article)
-  			post :create, article: article_attributes
-  			expect(Article.count).to eq(2)
-			
-		end
+  	context "with valid attributes" do		
+  		
+  		it "create a new article" do 
+  			article_attributes = FactoryGirl.attributes_for(:article)
+    			post :create, article: article_attributes
+    			expect(Article.count).to eq(2)
+  			
+  		end
 
-		it "redirect to index" do 
-			post :create, article: FactoryGirl.attributes_for(:article)
-			response.should redirect_to root_path
-		end	
-	end 	
+  		it "redirect to index" do 
+  			post :create, article: FactoryGirl.attributes_for(:article)
+  			response.should redirect_to root_path
+  		end	
+  	end 	
 
-	context "for invalid attributes" do
+  	context "with invalid attributes" do
 
-		it "does not save the record" do 
-			expect{post :create ,article: FactoryGirl.attributes_for(:author)}.to_not change(Article,:count)
-		end
+  		it "does not save the record" do 
+  			expect{post :create ,article: FactoryGirl.attributes_for(:author)}.to_not change(Article,:count)
+  		end
 
-		it "re-render the new method" do 
-			post :create ,article: FactoryGirl.attributes_for(:article, title: nil , body: nil)
-			response.should render_template :new
-		end
-	end
+  		it "re-render the new method" do 
+  			post :create ,article: FactoryGirl.attributes_for(:article, title: nil , body: nil)
+  			response.should render_template :new
+  		end
+  	end
   end
 
   describe "#PUT update an article" do
