@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :initialize_variables, only:[:new]
+	load_and_authorize_resource
 	def new  		
 	end
 
@@ -8,12 +9,13 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
+		
 		if params[:article].present?
 			@article = Article.new(article_params)
 
 			if @article.save		
 				flash[:notice]	= "Article was created successfully"
-				redirect_to root_path
+				redirect_to articles_path
 			else				
 				render 'new'
 			end
@@ -57,7 +59,7 @@ class ArticlesController < ApplicationController
 	private
 
 	 def article_params
-	 	params.require(:article).permit(:body,:title,:published_on,:is_published,:is_commentable,:user_id )
+	 	params.require(:article).permit(:body,:cover,:title,:published_on,:is_published,:is_commentable,:user_id )
 	 end
 
 	 def find_article  

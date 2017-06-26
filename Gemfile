@@ -26,6 +26,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'paperclip'
+gem "mini_magick"
+gem "carrierwave"
+gem 'cancancan'
+gem 'rolify'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,6 +59,8 @@ group :development, :test do
   gem "pry-nav", "~> 0.2"
   gem 'pry-rails'
   gem 'pry-remote'
+  gem 'rubocop'
+  gem 'excellent'
 end
 
 group :development do

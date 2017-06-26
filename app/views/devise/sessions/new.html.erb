@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div>
     <div>
       <h2>Log in</h2>
@@ -28,4 +28,23 @@
       <%= render "devise/shared/links" %>
     </div>    
   </div> 
-</div>
+</div> -->
+
+<div id="exTab2" class="container"> 
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a  href="#1" data-toggle="tab">Admin Login</a>
+      </li>
+      <li><a href="#2" data-toggle="tab">Author Login</a>      </li>
+      
+    </ul>
+
+      <div class="tab-content ">
+        <div class="tab-pane active" id="1">
+          <%= render partial: "/devise/sessions/login" ,locals: { role: "admin" }%>            
+        </div>
+        <div class="tab-pane" id="2">
+          <%= render partial: "/devise/sessions/login",locals: { role: "author" } %>            
+        </div>        
+      </div>
+  </div>

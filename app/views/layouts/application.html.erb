@@ -62,16 +62,19 @@
                             <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
                         </ul>
                     </li>
-                    <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Steve Miller<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                     <% if user_signed_in? %>
+                        <li class="dropdown user-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                                <li class="divider"></li>
+                                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
-                        </ul>
-                    </li>
+                            </ul>                                             
+                        </li>
+                    <% else %>                           
+                    <% end %>  
                     <li class="divider-vertical"></li>
                     <li>
                         <form class="navbar-search">
@@ -80,10 +83,7 @@
                     </li>
                 </ul>
             </div>
-        </nav>
-		<div class="">
-			<%= render :partial => '/layouts/shared/header' %>
-		</div>	
+        </nav>		
 		<div class="navbar-margin-top">
 			<%= render :partial => '/layouts/shared/messages' %>
 		</div>	

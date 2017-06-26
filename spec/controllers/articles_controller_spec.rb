@@ -4,17 +4,17 @@ RSpec.describe ArticlesController, :type => :controller do
 	
 	before(:each)  do 
 		@article = FactoryGirl.create(:article)
-    user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user)
     allow(controller).to receive(:authenticate_user!).and_return(true)
-    allow(controller).to receive(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(@user)
 	end
 
 	after(:each) do 
 		Article.destroy_all
 	end
 
-	describe "GET #index" do
-      
+	describe "index page" do
+    
 		it "populates an array of articles" do 			
 			get :index
 			assigns(:articles).should eq([@article])
@@ -53,18 +53,17 @@ RSpec.describe ArticlesController, :type => :controller do
   		
   		it "create a new article" do 
   			article_attributes = FactoryGirl.attributes_for(:article)
-    			post :create, article: article_attributes
-    			expect(Article.count).to eq(2)
-  			
+    		post :create, article: article_attributes,user: @user
+    		expect(Article.count).to eq(2)			
   		end
 
   		it "redirect to index" do 
-  			post :create, article: FactoryGirl.attributes_for(:article)
-  			response.should redirect_to root_path
-  		end	
-  	end 	
-
-  	context "with invalid attributes" do
+  			post :create, article: FactoryGirl.attributes_for(:article),user: @user
+  			response.should redirect_to articles_path
+  	  end	
+	  end 	
+it
+  	context "for invalid attributes" do
 
   		it "does not save the record" do 
   			expect{post :create ,article: FactoryGirl.attributes_for(:author)}.to_not change(Article,:count)
@@ -125,7 +124,8 @@ RSpec.describe ArticlesController, :type => :controller do
   		headers = { "CONTENT_TYPE" => "application/json" }
   		delete :destroy, id: @article,format: :json
   	end
-
   end
+
+  #it create a new article instance  
 
 end

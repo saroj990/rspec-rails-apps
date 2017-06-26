@@ -1,7 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid"> 
 	<% flash.each do |key, message| %>
-	  <div id="flash-<%= key %>" class="alert alert-info">
-	    <%= message %>
-	  </div>
+    <% if key.eql? "alert" %>
+     <%= render :partial => '/layouts/shared/render_flash_messages' , locals: {key: 'warning',message: message}%>
+    <% end %>
+    <% if key.eql? "notice" %>
+      <%= render :partial => '/layouts/shared/render_flash_messages' , locals: {key: 'info',message: message}%>
+    <% end %>
 	<% end %>
 </div>

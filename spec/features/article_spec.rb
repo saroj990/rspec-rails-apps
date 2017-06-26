@@ -1,16 +1,15 @@
-require 'spec_helper'
+require 'rails_helper'
 include Warden::Test::Helpers             ## including some warden magic
 Warden.test_mode!
 
-describe 'Feature spec Article' do 
-	describe "Manage Article" do 
+feature 'Feature spec Article' do 
+	feature "Manage Article" do 
 		before :each do
 			Article.destroy_all
 			user = FactoryGirl.create(:user)
-      		login_as(user)
-		   
+      login_as(user,scope: :user)		   
 		end
-		it "Adds new article and display the result" do 
+		scenario "Adds new article and display the result" do 
 			visit articles_url
 
 			expect{
@@ -23,7 +22,7 @@ describe 'Feature spec Article' do
 			expect(page).to have_content("Article was created successfully")
 		end
 
-		it "Deletes an article" do 			
+		scenario "Deletes an article" do 			
 			@article =  FactoryGirl.create(:article,title: "Faker usage",body: "i will add it later")
 			visit articles_url
 			expect{
@@ -37,7 +36,7 @@ describe 'Feature spec Article' do
 			#expect(page.current_url).to eq(root_path)
 		end
 
-		it "Show an article" do 
+		scenario "Show an article" do 
 			@article = FactoryGirl.create(:article)
 			visit articles_url
 
@@ -51,7 +50,7 @@ describe 'Feature spec Article' do
 			expect(page.current_url).to eq(article_url(@article))
 		end
 
-		it "Edit an article" do 
+		scenario "Edit an article" do 
 			@article = FactoryGirl.create(:article)
 			visit articles_url
 			
@@ -70,7 +69,6 @@ describe 'Feature spec Article' do
 			
 			expect(page).to have_content("Article was updated successfully")
 			expect(page.current_url).to eq(articles_url)
-
 		end
 	end
 end
